@@ -94,6 +94,12 @@ void GameUI::update(const RunStats &stats, Client *client, MapDrawControl *draw_
 
 	s32 minimal_debug_height = 0;
 
+	static constexpr const char* network_security_level_str[] = {
+		N_("Unsecured"),
+		N_("Unverified"),
+		N_("Fully Authenticated")
+	};
+
 	// Minimal debug text must only contain info that can't give a gameplay advantage
 	if (m_flags.show_minimal_debug) {
 		const u16 fps = 1.0 / stats.dtime_jitter.avg;
@@ -110,10 +116,11 @@ void GameUI::update(const RunStats &stats, Client *client, MapDrawControl *draw_
 			<< " | dtime jitter: "
 			<< (stats.dtime_jitter.max_fraction * 100.0f) << "%"
 			<< std::setprecision(1)
-			<< " | view range: "
+			<< _(" | view range: ")
 			<< (draw_control->range_all ? "All" : itos(draw_control->wanted_range))
 			<< std::setprecision(2)
-			<< " | RTT: " << (client->getRTT() * 1000.0f) << "ms";
+			<< _(" | RTT: ") << (client->getRTT() * 1000.0f) << "ms"
+			<< _(" | Network security:") << gettext(network_security_level_str[(int)client->getNetSecurityLevel()]);
 
 		m_guitext->setRelativePosition(core::rect<s32>(5, 5, screensize.X, screensize.Y));
 

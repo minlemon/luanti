@@ -2004,6 +2004,9 @@ random_mod_load_order (Random mod load order) [server] bool false
 enable_mod_channels (Mod channels) [server] bool false
 
 [**Mod Profiler] [server]
+#    Dump network encryption key to info-stream, only enabled in debug builds.
+#    Useful for network debugging with Wireshark. 
+secure.dump_network_encryption_key (Network) bool false
 
 #    Load the game profiler to collect game profiling data.
 #    Provides a /profiler command to access the compiled profile.

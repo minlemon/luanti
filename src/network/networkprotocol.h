@@ -14,6 +14,9 @@ constexpr u16 SERVER_PROTOCOL_VERSION_MIN = 37;
 // Client's supported network protocol range
 constexpr u16 CLIENT_PROTOCOL_VERSION_MIN = 37;
 
+// Min protocol version to enable packet encryption for
+const u16 PROTOCOL_VERSION_ENCRYPTION = 49;
+
 extern const u16 FORMSPEC_API_VERSION;
 
 #define TEXTURENAME_ALLOWED_CHARS "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-"
@@ -31,6 +34,7 @@ enum ToClientCommand : u16
 		u16 deployed protocol version
 		u32 supported auth methods
 		std::string unused (used to be username)
+		u8[32] echde_pub_key, server ephemeral curve25519 public key 
 	*/
 
 	TOCLIENT_AUTH_ACCEPT = 0x03,
@@ -700,6 +704,7 @@ enum ToServerCommand : u16
 		u16 minimum supported network protocol version
 		u16 maximum supported network protocol version
 		std::string player name
+		u8[32] echde_pub_key, client ephemeral curve25519 public key
 	*/
 
 	TOSERVER_INIT2 = 0x11,

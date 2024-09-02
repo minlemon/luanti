@@ -693,6 +693,7 @@ if(BUILD_CLIENT)
 		${JSON_LIBRARY}
 		${LUA_BIT_LIBRARY}
 		sha256
+		OpenSSL::Crypto
 		${FREETYPE_LIBRARY}
 		${PLATFORM_LIBS}
 		# on Android, Luanti depends on SDL2 directly
@@ -783,6 +784,7 @@ if(BUILD_SERVER)
 		${LUA_LIBRARY}
 		${LUA_BIT_LIBRARY}
 		sha256
+		OpenSSL::Crypto
 		${GMP_LIBRARY}
 		${PLATFORM_LIBS}
 	)

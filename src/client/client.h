@@ -16,6 +16,7 @@
 #include "inventorymanager.h"
 #include "network/address.h"
 #include "network/networkprotocol.h" // multiple enums
+#include "network/encryption.h"
 #include "network/peerhandler.h"
 #include "gameparams.h"
 #include "script/common/c_types.h" // LuaError
@@ -446,6 +447,8 @@ public:
 
 	bool inhibit_inventory_revert = false;
 
+	NetworkEncryption::ConnectionSecurityLevel getNetSecurityLevel() const { return m_network_security_level; }
+
 private:
 	void loadMods();
 
@@ -595,4 +598,11 @@ private:
 
 	// The number of blocks the client will combine for mesh generation.
 	MeshGrid m_mesh_grid;
+
+	// network encryption state
+	NetworkEncryption::ECDHEKeyPair   m_network_ephemeral_key = {};
+	NetworkEncryption::ECDHEPublicKey m_server_ephemeral_key  = {};
+	NetworkEncryption::HandshakeDigest     m_handshake_digest = {};
+
+	NetworkEncryption::ConnectionSecurityLevel m_network_security_level = NetworkEncryption::ConnectionSecurityLevel::Passive;
 };

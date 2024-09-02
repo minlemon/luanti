@@ -65,10 +65,17 @@
 	PROTOCOL VERSION 48
 		Add compression to some existing packets
 		[scheduled bump for 5.12.0]
+	PROTOCOL VERSION 49:
+		Implement anonymous ECDHE key exchange to prevent passive eavesdropping with perfect forward secrecy.
+		Active attackers can still attack the protocol.
+		TOSERVER_INIT changes: include client ephemeral public key
+		TOCLIENT_HELLO changes: include server ephemeral public key
+		SRP state now includes the client and server ephemeral keys
+		TOCLIENT_AUTH_ACCEPT/TOCLIENT_ACCEPT_SUDO_MODE changes: Include the H/M_2 SRP response
 */
 
 // Note: Also update core.protocol_versions in builtin when bumping
-const u16 LATEST_PROTOCOL_VERSION = 48;
+const u16 LATEST_PROTOCOL_VERSION = 49;
 
 // See also formspec [Version History] in doc/lua_api.md
 const u16 FORMSPEC_API_VERSION = 9;

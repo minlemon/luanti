@@ -36,7 +36,7 @@ jobs:
       - name: Check trailing whitespaces
         run: |
           if git ls-files |\
-            grep -E '\.txt$|\.md$|\.[ch]$|\.cpp$|\.hpp$|\.sh$|\.cmake$|\.glsl$' |\
+            grep -v "dist/msvc-compatible" | grep -E '\.txt$|\.md$|\.[ch]$|\.cpp$|\.hpp$|\.sh$|\.cmake$|\.glsl$' |\
             xargs grep -n '\s$';\
           then\
             echo -e "\033[0;31mFound trailing whitespace";\

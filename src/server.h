@@ -700,10 +700,6 @@ private:
 
 	ModIPCStore m_ipcstore;
 
-	// network encryption
-	std::mutex m_keygen_lock;
-	NetworkEncryption::EphemeralKeyGenerator m_keygen;
-
 	/*
 		Threads
 	*/

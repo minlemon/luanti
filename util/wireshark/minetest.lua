@@ -68,10 +68,10 @@ function fromhex(hex)
 end
 
 function tohex(data)
-    local str = ""
-    for i = 1, #data do
-        str = str..string.format("%02X", string.byte(data:sub(i, i)) .. " ")
-    end
+	local str = ""
+	for i = 1, #data do
+		str = str..string.format("%02X", string.byte(data:sub(i, i)) .. " ")
+	end
 	return str
 end
 

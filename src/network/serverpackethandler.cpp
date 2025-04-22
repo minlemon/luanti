@@ -1651,7 +1651,7 @@ void Server::handleCommand_SrpBytesA(NetworkPacket* pkt)
 
 	std::string identity_for_encrypted_srp;
 	if (client->hasEncryptedNetwork()) {
- 		const auto &handshake_digest = client->getHandshakeDigest();
+		const auto &handshake_digest = client->getHandshakeDigest();
 		NetworkEncryption::get_identity_for_srp(client->getHandshakeDigest(), client->getName(), identity_for_encrypted_srp);
 
 		identity = identity_for_encrypted_srp.c_str();

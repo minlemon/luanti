@@ -13,7 +13,6 @@
 #include <openssl/evp.h>
 #else
 #include "util/sha1.h"
-#include "my_sha256.h"
 #endif
 
 namespace hashing

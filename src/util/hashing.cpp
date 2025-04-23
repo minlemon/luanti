@@ -13,6 +13,7 @@
 #include <openssl/evp.h>
 #else
 #include "util/sha1.h"
+#include "Hacl_Hash_SHA2.h"
 #endif
 
 namespace hashing
@@ -43,7 +44,7 @@ std::string sha256(std::string_view data)
 	auto success = EVP_Digest(src, data.size(), dst, nullptr, EVP_sha256(), nullptr) == 1;
 	FATAL_ERROR_IF(!success, "sha256 failed");
 #else
-	SHA256(src, data.size(), dst);
+	Hacl_Hash_SHA2_hash_256((unsigned char*)digest.data(), (unsigned char*)data.data(), data.size());
 #endif
 	return digest;
 }

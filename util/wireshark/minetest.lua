@@ -35,10 +35,9 @@ function minetest_field_helper(lentype, name, abbr)
 	return f_textlen, f_text
 end
 
-<<<<<<< HEAD
 -- global reference to 'minetest.peer' field (set later)
 local minetest_peer_field
-=======
+
 local ok, gcrypt = pcall(require, "luagcrypt")
 if not ok then gcrypt = nil end
 
@@ -172,8 +171,6 @@ function packet_decrypt(root_key, channel_id, peer_id, seq_num, aes_packet_data)
 	
 	return packet_decrypt_brute_generation(channel_decryption_key, channel_id, seq_num, encrypted_data_without_tag, correct_auth_tag)
 end
-
->>>>>>> 5b6d6e59b (Update wireshark script for network encryption.)
 
 
 --------------------------------------------

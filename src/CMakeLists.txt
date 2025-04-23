@@ -606,7 +606,7 @@ add_library(EngineCommon OBJECT
 )
 add_dependencies(EngineCommon GenerateVersion)
 target_link_libraries(EngineCommon
-	sha256
+	HACL-star
 )
 if(USE_OPENSSL)
 	target_link_libraries(EngineCommon OpenSSL::Crypto)
